@@ -1,5 +1,6 @@
 package basis.reflect.myjpa;
 
+import javax.xml.transform.Source;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -25,9 +26,15 @@ class A<T> {
         System.out.println(genericSuperclass);
         System.out.println(genericSuperclass.getClass());
 
+        System.out.println();
+
         // 本质是ParameterizedTypeImpl 可向下强转
         ParameterizedType genSuperclass = (ParameterizedType) genericSuperclass;
-
+        // 可以获取范型的实际参数
+        Type[] actualTypeArguments = genSuperclass.getActualTypeArguments();
+        Class actualTypeArgument = (Class) actualTypeArguments[0];
+        System.out.println(actualTypeArgument);
+        System.out.println(actualTypeArguments.getClass());
     }
 }
 
