@@ -19,9 +19,9 @@ public class BaseDao<T> {
     static {
         dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://rm-2ze611a1zde9eq4f7.mysql.rds.aliyuncs.com:3306/dbdms?serverTimezone=GMT%2B8");
+        dataSource.setUrl("jdbc:mysql://rm-***.mysql.rds.aliyuncs.com:3306/dbdms?serverTimezone=GMT%2B8");
         dataSource.setUsername("dbdms");
-        dataSource.setPassword("7Zffm1alajxUN3yr");
+        dataSource.setPassword("***");
     }
 
     /**
