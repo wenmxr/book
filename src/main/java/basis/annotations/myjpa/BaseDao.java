@@ -1,4 +1,4 @@
-package basis.reflect.myjpa;
+package basis.annotations.myjpa;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,7 +18,7 @@ public class BaseDao<T> {
 
     static {
         DATA_SOURCE = new BasicDataSource();
-        DATA_SOURCE.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        DATA_SOURCE.setDriverClassName("com.mysql.jdbc.Driver");
         DATA_SOURCE.setUrl("jdbc:mysql://rm-***.mysql.rds.aliyuncs.com:3306/dbdms?serverTimezone=GMT%2B8");
         DATA_SOURCE.setUsername("***");
         DATA_SOURCE.setPassword("***");
@@ -48,7 +48,7 @@ public class BaseDao<T> {
         Field[] fields = bean.getClass().getDeclaredFields();
 
         // 拼接sql语句，表名直接用POJO的类名，所以创建表时，请注意写成User，而不是t_user
-        StringBuilder sql = new StringBuilder("insert into ").append(beanClass.getSimpleName()).append(" values(");
+        StringBuilder sql = new StringBuilder("insert into ").append(beanClass.getAnnotation(Table.class).value()).append(" values(");
         for (int i = 0; i < fields.length; i++) {
             sql.append("?");
             if (i < fields.length -1) {
