@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--  bean标签：用于配置spring创建对象，并存入ioc容器中； id属性：对象的唯一标识；class属性：对象的全限定类名  -->
+    <bean id="accountService" class="spring.ioc.four.service.impl.AccountServiceImpl"></bean>
+    <bean id="accountDao" class="spring.ioc.four.dao.impl.AccountDaoImpl"></bean>
+</beans>
