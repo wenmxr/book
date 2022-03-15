@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        bean标签：用于配置spring创建对象，并存入ioc容器中；
+        id属性：对象的唯一标识；
+        class属性：对象的全限定类名
+        scope属性：指定对象的作用范围
+            singleton：单例（默认）
+                应用只有一个对象实例，作用范围是整个引用
+                对象随容器的创建而创建，容器的销毁而销毁
+            prototype：多例
+                每次访问对象时，都会重新创建一个对象实例
+                每个对象实例一直存在，直到被GC回收
+        init-method: 指定类中初始化方法名称
+        destroy-method: 指定类中销毁方法名称
+    -->
+<!--    <bean id="accountService" class="spring.ioc.five.service.impl.AccountServiceImpl" scope="singleton" init-method="init" destroy-method="destroy"></bean>-->
+<!--    <bean id="accountService" class="spring.ioc.five.service.impl.AccountServiceImpl" scope="prototype" init-method="init" destroy-method="destroy"></bean>-->
+
+    <!--
+        spring管理静态工厂 利用静态工厂的方法创建对象
+        使用StaticFactory的静态方法createAccountService创建对象 并存入容器
+        id：指定bean的id 用于从容器中获取
+        class：静态工厂的全限定类名
+        factory-method：生产对象的静态方法
+     -->
+<!--    <bean id="accountService" class="spring.ioc.five.factory.StaticFactory" factory-method="createAccountService"></bean>-->
+
+    <!--
+        spring管理实例工厂 利用实例工厂的方法创建对象
+     -->
+    <bean id="instanceFactory" class="spring.ioc.five.factory.InstanceFactory"></bean>
+    <bean id="accountService" factory-bean="instanceFactory" factory-method="createAccountService"></bean>
+
+</beans>
+
