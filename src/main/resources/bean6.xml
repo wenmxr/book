@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        使用构造函数的方式，给service中的属性赋值
+        要求：
+            类中需要提供一个对应参数列表的构造函数
+            涉及标签
+            constructor-arg
+                属性
+                    index:指定参数在构造函数参数列表的索引位置
+                    type:指定参数在构造函数中的数据类型
+                    name:指定参数在构造函数中的名称
+
+                    ===以上三个都是在找给谁赋值===
+                    ===以下两个都是在找赋什么值===
+
+                    value:可以赋值基本数据类型和String类型
+                    ref:可以赋值其他bean类型，必须在配置文件中配置过的bean
+
+     -->
+
+<!--    <bean id="accountService" class="spring.di.three.service.impl.AccountServiceImpl">-->
+<!--        <constructor-arg name="name" value="tom"></constructor-arg>-->
+<!--        <constructor-arg name="age" value="18"></constructor-arg>-->
+<!--        <constructor-arg name="birthday" ref="now"></constructor-arg>-->
+<!--    </bean>-->
+
+<!--    <bean id="now" class="java.util.Date"></bean>-->
+
+
+    <!--
+        通过配置文件给bean中的属性赋值，采用set方法的方式
+        涉及的标签
+            property
+                属性
+                    name：找到类中set方法后面的部分
+                    value：赋值基本类型+String类型
+                    ref：赋值其他bean类型
+     -->
+
+    <bean id="accountService" class="spring.di.three.service.impl.AccountServiceImpl">
+        <property name="name" value="test"></property>
+<!--        <property name="age" value="18"></property>-->
+<!--        <property name="birthday" ref="now"></property>-->
+
+        <!-- 注入集合属性 结构相同 标签可互换 -->
+
+        <!-- list array set  -->
+        <property name="myList">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </list>
+        </property>
+        <property name="mySet">
+            <set>
+                <value>aa</value>
+                <value>bb</value>
+            </set>
+        </property>
+        <property name="myStrs">
+            <array>
+                <value>a</value>
+                <value>b</value>
+                <value>c</value>
+            </array>
+        </property>
+
+        <!-- map properties -->
+        <property name="myMap">
+            <map>
+                <entry key="a" value="aa"></entry>
+                <entry key="b">
+                    <value>bb</value>
+                </entry>
+            </map>
+        </property>
+        <property name="myProps">
+            <props>
+                <prop key="a">aaa</prop>
+                <prop key="b">bbb</prop>
+                <prop key="c">ccc</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="now" class="java.util.Date"></bean>
+
+
+
+</beans>
+
