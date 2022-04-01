@@ -1,4 +1,4 @@
-package basis.lambda.moke;
+package basis.lambda.mock;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -78,10 +78,11 @@ class MyList<T> {
 
     /**
      * 给MyList传递具体的判断规则，然后MyList把内部现有符合判断（true）的元素集返回
+     *
      * @param predicate
      * @return
      */
-    public MyList<T> filter(Predicate<T> predicate){
+    public MyList<T> filter(Predicate<T> predicate) {
         MyList<T> filteredList = new MyList<>();
 
         for (T t : list) {
