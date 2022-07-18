@@ -1,16 +1,20 @@
-package spring.annotations.xml.service.impl;
+package spring.annotations.anno.service.impl;
 
-import spring.annotations.xml.dao.IAccountDao;
-import spring.annotations.xml.domain.Account;
-import spring.annotations.xml.service.IAccountService;
+import org.springframework.stereotype.Service;
+import spring.annotations.anno.dao.IAccountDao;
+import spring.annotations.anno.domain.Account;
+import spring.annotations.anno.service.IAccountService;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * 账户的业务层实现类
  */
+@Service("accountService")
 public class AccountServiceImpl implements IAccountService {
 
+    @Resource
     private IAccountDao accountDao;
 
     public void setAccountDao(IAccountDao accountDao) {

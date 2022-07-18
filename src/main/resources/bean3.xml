@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 告知spring容器 在扫描时需要创建的包 -->
-    <context:component-scan base-package="spring.annotations.anno"></context:component-scan>
+<!--    <context:component-scan base-package="spring.annotations.withoutxml"></context:component-scan>-->
 
 <!--    &lt;!&ndash; 配置Service &ndash;&gt;-->
 <!--    <bean id="accountService" class="spring.annotations.xml.service.impl.AccountServiceImpl">-->
@@ -23,15 +23,15 @@
 <!--    </bean>-->
 
     <!-- 配置QueryRunner 多例 -->
-    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
-        <!-- 注入数据源 -->
-        <constructor-arg name="ds" ref="dataSource"></constructor-arg>
-    </bean>
+<!--    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">-->
+<!--        &lt;!&ndash; 注入数据源 &ndash;&gt;-->
+<!--        <constructor-arg name="ds" ref="dataSource"></constructor-arg>-->
+<!--    </bean>-->
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://rm-******.mysql.rds.aliyuncs.com:3306/dbdms?serverTimezone=GMT%2B8"></property>
-        <property name="user" value="dbdms"></property>
-        <property name="password" value="******"></property>
-    </bean>
+<!--    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+<!--        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>-->
+<!--        <property name="jdbcUrl" value="jdbc:mysql://***.mysql.rds.aliyuncs.com:3306/dbdms?serverTimezone=GMT%2B8"></property>-->
+<!--        <property name="user" value="dbdms"></property>-->
+<!--        <property name="password" value="***"></property>-->
+<!--    </bean>-->
 </beans>

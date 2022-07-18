@@ -1,24 +1,24 @@
-package spring.annotations.xml.dao.impl;
+package spring.annotations.anno.dao.impl;
 
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
-import spring.annotations.xml.dao.IAccountDao;
-import spring.annotations.xml.domain.Account;
+import org.springframework.stereotype.Repository;
+import spring.annotations.anno.dao.IAccountDao;
+import spring.annotations.anno.domain.Account;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * 账户的持久层实现类
  */
+@Repository("accountDao")
 public class AccountDaoImpl implements IAccountDao {
 
+    @Resource
     private QueryRunner runner;
-
-    public void setRunner(QueryRunner runner) {
-        this.runner = runner;
-    }
 
     @Override
     public List<Account> findAllAccount() {
